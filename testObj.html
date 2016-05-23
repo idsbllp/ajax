@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>a</title>
+</head>
+<body>
+
+<div class="test-ajax">aha</div>
+
+<script src="./ajax.js"></script>
+<script>
+
+var firstXmr = {
+	url: './test.php',
+	methed: 'post',
+	async: true,
+	data: {   
+		a: 1,
+		b: 2
+	},     //object
+	success: function (response, xml) {
+		// console.log(response, xml);
+		document.body.innerHTML = response;
+	},
+	fail: function (status) {
+		// console.log(status);
+		document.body.innerHTML = status;
+	}
+}
+MyAjax(firstXmr);
+
+
+</script>
+</body>
+</html>
