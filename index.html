@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax</title>
+</head>
+<body>
+
+<script src="./ajax.js"></script>
+<script>
+
+    function jsonpFunction(params) {
+        console.log('来自jsonp.php: \n', params);
+    }
+
+    // ajax 
+    Ajax({
+        url: './ajax.json',
+        methed: 'GET',
+        async: true,
+        data: {
+            a: '"js"',
+            b: '中文',
+            c: 'asd'
+        },
+        // data: 'a="js"&b=中文&c="c"',
+        success: function (res) {
+            console.log('来自ajax.json \n', res);
+
+        },
+        fail: function (status) {
+            document.body.innerHTML = status;
+        }
+    });
+
+    // jsonp 
+    var jsonpUrl = 'http://127.0.0.1/function/Ajax';
+    Ajax({
+        url: jsonpUrl + '/jsonp.php',
+        methed: 'GET',
+        async: true,
+        data: {
+            a: '"js"',
+            b: '中文',
+            c: 'asd'
+        },
+        // data: 'a="js"&b=中文&c="c"',
+        jsonp: 'jsonpFunction',
+        success: function (res) {
+            console.log(res);
+        },
+        fail: function (status) {
+            document.body.innerHTML = status;
+        }
+    });
+
+
+</script>
+</body>
+</html>
